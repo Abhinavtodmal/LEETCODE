@@ -1,22 +1,33 @@
 class Solution {
 public:
     void sortColors(vector<int>& nums) {
-        int n = nums.size();
-  for (int i = 0; i < n; i++) {
-        // Optimization: check if the array is already sorted
-        bool swapped = false;
+        
+        int low =0 , mid = 0;
+        int high =nums.size() -1 ;
 
-        for (int j = 0; j < n - i - 1; j++) {
-            // Swap if the current element is greater than the next
-            if (nums[j] > nums[j + 1]) {
-                swap(nums[j], nums[j + 1]);
-                swapped = true;
-            }
-        }
-
-        // If no elements were swapped in the inner loop, array is sorted
-        if (!swapped)
-            break;
-    }      
+    for(int i = 0 ; i < nums.size(); i++)
+    {
+       if(nums[mid] == 0)
+       {
+         swap(nums[mid], nums[low]);
+           low ++;
+           mid++;
+       }
+       else if(nums[mid] == 1)
+       {
+           mid++;
+       }
+       else 
+       {
+            swap(nums[mid] ,nums[high]);
+            high--;
+       }
+    }
     }
 };
+
+// If arr[mid] == 0: swap arr[low] and arr[mid], then low++, mid++
+
+// If arr[mid] == 1: just mid++
+
+// If arr[mid] == 2: swap arr[mid] and arr[high], then high-- (but don’t move mid yet)
