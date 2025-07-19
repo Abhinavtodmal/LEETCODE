@@ -9,3 +9,5 @@ from (
 group by id 
 order by num desc 
 limit 1 ;
+
+-- HAVING is used for filtering groups, so if you want to show the count, you still need to use COUNT(*) in SELECT
