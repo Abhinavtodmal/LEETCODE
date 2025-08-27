@@ -1,8 +1,5 @@
-select customer_number 
-from (
-    select customer_number , count(*) as freq
-    from Orders 
-    group by customer_number
-) as counts
-order by freq desc 
-limit 1 ;
+SELECT customer_number
+FROM Orders
+GROUP BY customer_number
+ORDER BY COUNT(*) DESC
+LIMIT 1;
